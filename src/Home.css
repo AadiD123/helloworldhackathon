@@ -1,0 +1,72 @@
+.ticker-wrapper {
+  position: relative;
+  max-width: 800px;
+  margin: auto;
+  padding-top: 200px;
+}
+
+.bigheading {
+  display: block;
+  position: absolute;
+  font-style: italic;
+  font-size: 40px;
+  background: #e60000;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 15px;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+.bigheading::after,
+.bigheading::before {
+  content: "";
+  width: 0;
+  position: absolute;
+  border-width: 78px;
+  border-style: solid;
+  top: 0;
+  z-index: -1;
+}
+
+.bigheading:before {
+  border-color: #e60000 transparent transparent transparent;
+  right: -78px;
+}
+
+.bigheading:after {
+  border-color: #e60000 transparent transparent transparent;
+  left: -78px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 50px;
+}
+
+.square {
+  width: 450px;
+  height: 450px;
+  background-color: #98e496;
+}
+
+.graphGainer {
+  height: 450px;
+  width: 100px;
+  background-color: #fff;
+}
+
+.square2 {
+  width: 450px;
+  height: 450px;
+  background-color: #e3a2ae;
+}
+
+.graphLoser {
+  height: 450px;
+  width: 100px;
+  background-color: #fff;
+}
