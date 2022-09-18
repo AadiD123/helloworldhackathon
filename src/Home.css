@@ -82,3 +82,11 @@
   font-family: "Times New Roman", Times, serif;
   text-align: left;
 }
+
+.stockContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 100px;
+}

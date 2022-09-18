@@ -9,6 +9,7 @@ function Home() {
 
   const [topStocks, setTopStocks] = useState([]);
   const [loserStocks, setLoserStocks] = useState([]);
+  const [stockArr, setStockArr] = useState([]);
 
   const [name, setName] = useState("");
 
@@ -22,8 +23,6 @@ function Home() {
         name +
         "&interval=60min&outputsize=full&apikey=ZGE19H5HOBZKLLHD"
     ).then((response) => {
-      console.log(response);
-
       var metadata = response.data["Meta Data"]["3. Last Refreshed"];
       var open = response.data["Time Series (60min)"][metadata]["1. open"];
       var high = response.data["Time Series (60min)"][metadata]["2. high"];
@@ -32,7 +31,7 @@ function Home() {
       var volume = response.data["Time Series (60min)"][metadata]["5. volume"];
 
       var stockArray = { open, high, low, close, volume };
-      console.log(stockArray);
+      setStockArr(stockArray);
     });
   };
 
@@ -89,14 +88,10 @@ function Home() {
           </p>
         </div>
       </div> */}
-      <div>
-        <input onChange={handleInput} placeholder="Enter Stock Ticker" />
-        <button onClick={logValue}>Search</button>
-      </div>
 
       <div className="container">
         <div>
-          <h3>Top Gainers</h3>
+          <h3>Top Gainers (today)</h3>
           <div className="containGain">
             <div className="square">
               <table className="table">
@@ -128,7 +123,7 @@ function Home() {
           </div>
         </div>
         <div>
-          <h3>Top Losers</h3>
+          <h3>Top Losers (today)</h3>
           <div className="containLoss">
             <div className="square2">
               <table className="table">
@@ -158,6 +153,21 @@ function Home() {
             </div>
             <div className="graphLoser"></div>
           </div>
+        </div>
+      </div>
+      <div>
+        <input onChange={handleInput} placeholder="Search Stock" />
+        <button onClick={logValue}>Search</button>
+      </div>
+      <div className="stockContainer">
+        <div>
+          <div>Open: {stockArr.open}</div>
+          <div>High: {stockArr.high}</div>
+          <div>Low: {stockArr.low}</div>
+        </div>
+        <div>
+          <div>Close: {stockArr.close}</div>
+          <div>Volume: {stockArr.volume}</div>
         </div>
       </div>
     </div>
