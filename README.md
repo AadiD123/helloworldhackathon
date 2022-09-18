@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+## Inspiration
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+We all know the benefits of investing in the stock market, however, we don't know where to start. Websites such as Yahoo Finance or apps such as Apple's Stock Market app are daunting to look at for beginners as they contain terminology and data for experts compacted in a small, unaesthetic manner. To fix this barrier to entry for beginners, we decided to create a beginner-friendly stock market website with only the essential (and approachable) information. We hope to be the gateway to get more people interesting in investing, and potentially achieve the financial freedom they hoped to achieve.
 
-## Available Scripts
+P.S. The name is Robinhood's antagonist because we don't support the popular investing website Robinhood due to their alleged market manipulation and ties with big wall street firms.
 
-In the project directory, you can run:
+## What it does
 
-### `npm start`
+Our website displays financial data regarding the entire stock market and specific stocks.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## How we built it
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+We built the website using the React framework and through free APIs we found online. To code collaborative, we used VSCode Live Share. Although only one of our members knew React, we decided this hackathon would be a great opportunity to get everybody familiar is such a powerful framework.
 
-### `npm test`
+## Challenges we ran into
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Our two biggest challenges were time and money. Due to other commitments such as swim meets and club meetings, most of our members were not able to code for more than 5 hours in this 24-hour hackathon. However, our biggest limitation was money. Most APIs that would have given us good data were paid and since we decided to keep the project free, the data that we received wasn't to the standard we expected.
 
-### `npm run build`
+## Accomplishments that we're proud of
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+We are proud to have a working website! We have all the functionality we would need to extract data from APIs and display it correctly onto the frontend. If we just get better APIs (which are likely paid) that give better information (eg: as high and low for the year instead of just the hour as we have it now), the website would be able to achieve our vision for what we could be.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## What we learned
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Through the project, our group learned how to create and work with tables in React. From extracting a .json file to use for its data and then creating a website presentable enough to display it, our group gained valuable skills in both thinking through the design of the website as well as most of the implementation of our code and ideas as well.
 
-### `npm run eject`
+## What's next for The Sheriff of Nottingham (TSN)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The immediate future of TSN lies in better APIs and UI Design. However, in the long term future, we hope to provide beginner-friendly features such as hyperlinks or pop-ups that give the definition of each financial term and has a news section that allows users to "feel" the market conditions instead of just looking at the numbers.
