@@ -2,12 +2,13 @@ import Ticker from "react-ticker";
 import React, { Component, useState } from "react";
 import Axios from "axios";
 import "./Home.css";
+import { wait } from "@testing-library/user-event/dist/utils";
 
 function Home() {
   const _APIKEY = "54ff816144462eb7ce61a1fd81afb014";
 
   const [topStocks, setTopStocks] = useState([]);
-  const [setLoserStocks, loserStocks] = useState();
+  const [loserStocks, setLoserStocks] = useState([]);
 
   const [name, setName] = useState("");
 
@@ -22,6 +23,16 @@ function Home() {
         "&interval=60min&outputsize=full&apikey=ZGE19H5HOBZKLLHD"
     ).then((response) => {
       console.log(response);
+
+      var metadata = response.data["Meta Data"]["3. Last Refreshed"];
+      var open = response.data["Time Series (60min)"][metadata]["1. open"];
+      var high = response.data["Time Series (60min)"][metadata]["2. high"];
+      var low = response.data["Time Series (60min)"][metadata]["3. low"];
+      var close = response.data["Time Series (60min)"][metadata]["4. close"];
+      var volume = response.data["Time Series (60min)"][metadata]["5. volume"];
+
+      var stockArray = { open, high, low, close, volume };
+      console.log(stockArray);
     });
   };
 
@@ -29,17 +40,18 @@ function Home() {
     Axios.get(
       "https://financialmodelingprep.com/api/v3/stock_market/gainers?apikey=" +
         _APIKEY
-    ).then((response) => {
+    ).then(async (response) => {
+      var arr = [];
       for (var j = 0; j < 10; j++) {
         var name = response.data[j].name;
         var symbol = response.data[j].symbol;
         var percent = response.data[j].changesPercentage;
+        percent = parseFloat(percent.toFixed(2));
         var change = response.data[j].change;
         var price = response.data[j].price;
-        var onestock = { name, symbol, percent, change, price };
-        setTopStocks([...topStocks, onestock]);
+        arr.push({ name, symbol, percent, change, price });
       }
-      console.log(topStocks);
+      setTopStocks(arr);
     });
   };
 
@@ -48,20 +60,22 @@ function Home() {
       "https://financialmodelingprep.com/api/v3/stock_market/losers?apikey=" +
         _APIKEY
     ).then((response) => {
-      console.log(response);
+      var arr = [];
       for (var j = 0; j < 10; j++) {
         var name = response.data[j].name;
         var symbol = response.data[j].symbol;
         var percent = response.data[j].changesPercentage;
+        percent = parseFloat(percent.toFixed(2));
         var change = response.data[j].change;
         var price = response.data[j].price;
-        setLoserStocks([{ name, symbol, percent, change, price }]);
+        arr.push({ name, symbol, percent, change, price });
       }
+      setLoserStocks(arr);
     });
   };
 
   return (
-    <div>
+    <div className="background">
       <h1>The Sheriff of Nottingham</h1>
       <h5>Stock data on your fingertips!</h5>
       <button onClick={getGainers}>Get Gainers</button>
@@ -79,12 +93,13 @@ function Home() {
         <input onChange={handleInput} placeholder="Enter Stock Ticker" />
         <button onClick={logValue}>Search</button>
       </div>
+
       <div className="container">
         <div>
           <h3>Top Gainers</h3>
           <div className="containGain">
             <div className="square">
-              <table>
+              <table className="table">
                 <thead>
                   <tr>
                     <th>Symbol</th>
@@ -115,7 +130,32 @@ function Home() {
         <div>
           <h3>Top Losers</h3>
           <div className="containLoss">
-            <div className="square2"></div>
+            <div className="square2">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Market Value</th>
+                    <th>Change</th>
+                    <th>Percent Change (%)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {loserStocks.map((gainers, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{gainers.symbol}</td>
+                        <td>{gainers.name}</td>
+                        <td>{gainers.price}</td>
+                        <td>{gainers.change}</td>
+                        <td>{gainers.percent}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
             <div className="graphLoser"></div>
           </div>
         </div>
